@@ -1,0 +1,32 @@
+/meu-projeto
+│
+├── /frontend
+│   ├── /public                # Arquivos públicos, como index.html
+│   ├── /src                   # Código fonte do React
+│   │   ├── /components        # Componentes React
+│   │   ├── /pages             # Páginas do React
+│   │   ├── /services          # Serviços para chamadas API (ex: axios)
+│   │   ├── /hooks             # Hooks personalizados
+│   │   ├── /styles            # Estilos globais e CSS
+│   │   ├── App.js             # Componente principal
+│   │   └── index.js           # Ponto de entrada da aplicação
+│   │
+│   ├── .env                   # Variáveis de ambiente
+│   ├── package.json           # Dependências e scripts do React
+│   └── README.md              # Documentação do frontend
+│
+├── /backend
+│   ├── /config                # Arquivos de configuração (ex: conexão ao banco de dados)
+│   ├── /controllers           # Controladores para manipulação de dados
+│   ├── /models                # Modelos de dados (ex: ORM, se usado)
+│   ├── /routes                # Rotas da API
+│   ├── /middleware            # Middleware (ex: autenticação)
+│   ├── /utils                 # Funções utilitárias
+│   ├── /public                # Arquivos públicos (ex: imagens, CSS)
+│   ├── index.php              # Ponto de entrada da aplicação PHP
+│   └── README.md              # Documentação do backend
+│
+├── /database                   # Scripts de migração ou seeding
+│   └── schema.sql             # Estrutura do banco de dados
+│
+└── .gitignore                  # Arquivos a serem ignorados pelo Git
