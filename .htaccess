@@ -1,7 +1,9 @@
+RewriteEngine On
+RewriteBase /hackaton24/backend/
 
-RewriteEngine On    
-
-# Handle Front Controller...
-RewriteCond %{REQUEST_FILENAME} !-d
+# Redireciona todas as requisições que não sejam para arquivos ou diretórios reais
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.php [L]
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redireciona tudo para o index.php
+RewriteRule ^(.*)$ index.php?/$1 [L]
