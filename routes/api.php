@@ -1,16 +1,18 @@
 <?php
-require_once '../app/Controllers/AuthController.php';
 
-$authController = new AuthController();
+require_once __DIR__ . '/../controllers/AuthController.php'; // Caminho correto para a controller
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SERVER['REQUEST_URI'] === '/login') {
-    $authController->login();
-}
+$AuthController = new AuthController(); // Instancia a controller
 
-$router->get('/login', function() {
-    //echo 'teste';
-    $userController = new UserController();
-    $userController->login();
+// Definir uma rota GET para /users
+$router->get('/users', function() {
+    return 'Exibindo todos os usuários';
 });
 
-?>
+// Definir uma rota POST para /login
+$router->post('/login', function() use ($AuthController) {
+    // Agora a variável $AuthController está acessível dentro da closure
+    return $AuthController->login(); // Chama o método da controller
+});
+
+// Você pode adicionar mais rotas aqui, conforme necessário

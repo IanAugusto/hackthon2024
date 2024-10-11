@@ -1,18 +1,14 @@
 <?php
-// Definindo cabeçalhos CORS
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST");
-header("Access-Control-Allow-Headers: Content-Type");
 
-// Definindo o caminho para os arquivos estáticos do React
+require_once 'Router.php'; // Incluir o roteador
 
-//// Servindo o arquivo index.html do React
-//if (file_exists($reactBuildPath . 'index.html')) {
-//    // Lê e exibe o conteúdo do index.html
-//    echo file_get_contents($reactBuildPath . 'index.html');
-//} else {
-//    // Se o arquivo não existir, exibe um erro
-//    http_response_code(404);
-//    echo '404 Not Found';
-//}
-?>
+$router = new Router(); // Instanciar o roteador
+
+require_once 'routes/api.php'; // Incluir o arquivo de rotas
+
+// Capturar o método HTTP e a URI atual
+$method = $_SERVER['REQUEST_METHOD'];
+$uri = $_SERVER['REQUEST_URI'];
+
+// Resolver a rota e exibir a resposta
+echo $router->resolve($method, $uri);
