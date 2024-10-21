@@ -1,12 +1,12 @@
 <?php
 
-require_once __DIR__ . '/../controllers/AuthController.php'; // Caminho correto para a controller
+require_once $_SERVER['DOCUMENT_ROOT'] . '/../controllers/AuthController.php'; 
 
 $AuthController = new AuthController(); // Instancia a controller
 
-// Definir uma rota GET para /users
-$router->get('/users', function() {
-    return 'Exibindo todos os usuários';
+// Definir uma rota GET para /user
+$router->get('/user', function() {
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/Hackthon-Back/controllers/UserGetController.php';
 });
 
 // Definir uma rota POST para /login
@@ -15,4 +15,11 @@ $router->post('/login', function() use ($AuthController) {
     return $AuthController->login(); // Chama o método da controller
 });
 
-// Você pode adicionar mais rotas aqui, conforme necessário
+$router->post('/register', function() {
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/Hackthon-Back/controllers/UserAddController.php'; 
+});
+
+$router->post('/edit', function() {
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/Hackthon-Back/controllers/UserEditController.php'; 
+});
+
