@@ -1,6 +1,6 @@
 <?php 
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Hackthon-Back/models/User.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Hackthon/Hackthon-Back/models/User.php';
 
 // Configura o header para JSON, pois será consumido pelo front
 header('Content-Type: application/json');

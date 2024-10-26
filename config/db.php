@@ -1,6 +1,6 @@
 <?php 
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Hackthon-Back/config/config.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Hackthon/Hackthon-Back/config/config.php';
 
 	class Conection {
 

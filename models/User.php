@@ -1,6 +1,6 @@
 <?php 
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Hackthon-Back/config/db.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Hackthon/Hackthon-Back/config/db.php';
 
 class User {
     private $id_usuario;
@@ -45,7 +45,7 @@ class User {
           $connection = Conection::connect();  
           $sql = "INSERT INTO usuarios (username, email, password) VALUES (:username, :email, :password)";
           $stmt = $connection->prepare($sql);
-          $stmt->bindValue(':usarname', $this->getUsername());
+          $stmt->bindValue(':username', $this->getUsername());
           $stmt->bindValue(':email', $this->getEmail());
           $stmt->bindValue(':password', $this->getPassword());
           $stmt->execute();
@@ -58,17 +58,29 @@ class User {
     public function readUser(){
         try{
             $connection = Conection::connect();
-            $sql = "SELECT * FROM usuarios WHERE id_pessoa = :id_usuario";
+            $sql = "SELECT * FROM usuarios WHERE id_usuario = :id_usuario";
             $stmt = $connection->prepare($sql);
             $stmt->bindValue(':id_usuario', $this->getIdUser());
             $stmt->execute();
-            $result = $stmt->fetch();
-            $this->setUsername($result['usarname']);
-            $this->setEmail($result['email']);
-            $this->setPassword($result['password']);
-
-        }catch(PDOException $e){
+    
+            // Recupera os dados do usuário
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            // Verifica se o usuário foi encontrado
+            if ($result) {
+                // Retorna os dados do usuário
+                return [
+                    'username' => $result['username'], // Corrigido de 'usarname' para 'username'
+                    'email' => $result['email'],
+                    // Você pode incluir mais campos se necessário, mas não a senha
+                ];
+            } else {
+                return null; // Nenhum usuário encontrado
+            }
+    
+        } catch (PDOException $e) {
             echo $e->getMessage();
+            return null; // Retorna null em caso de erro
         }
     }
 
